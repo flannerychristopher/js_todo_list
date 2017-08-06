@@ -21,12 +21,11 @@ Task.prototype.toHTML = function() {
                       '<li>' + this.description + '</li>' +
                       '<li>' + this.deadline + '</li>';
   if (this.complete === false) {
-    taskItem.innerHTML += '<span class="incomplete">click to mark complete';
-    taskItem.innerHTML += '</span>';
+    taskItem.innerHTML += '<span class="incomplete">click to mark complete</span>';
   } else {
-    taskItem.innerHTML += '<span class="complete">click to mark incomplete';
-    taskItem.innerHTML += '</span>';
+    taskItem.innerHTML += '<span class="complete">click to mark incomplete</span>';
   }
+  taskItem.innerHTML += '<br><span class="delete">click to delete this item</span>';
   return taskItem.outerHTML;
 }
 
