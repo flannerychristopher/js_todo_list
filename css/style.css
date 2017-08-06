@@ -51,3 +51,12 @@ ol > li {
   border-bottom-right-radius: 30px;
   margin-bottom: 1em;
 }
+span {
+  font-weight: bolder;
+}
+.complete {
+  color: #36b355;
+}
+.incomplete {
+  color: #c84d4d;
+}

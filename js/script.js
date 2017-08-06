@@ -16,10 +16,17 @@ Task.prototype.finish = function() {
   this.complete = true;
 }
 Task.prototype.toHTML = function() {
-  let taskItem = document.createElement('li');
-  taskItem.innerHTML = '<ul><li>' + this.name + '</li>' +
-                      '<li>' + this.description +
-                      '</li><li>' + this.deadline + '</li></ul>';
+  let taskItem = document.createElement('ul');
+  taskItem.innerHTML = '<li>' + this.name + '</li>' +
+                      '<li>' + this.description + '</li>' +
+                      '<li>' + this.deadline + '</li>';
+  if (this.complete === false) {
+    taskItem.innerHTML += '<span class="incomplete">click to mark complete';
+    taskItem.innerHTML += '</span>';
+  } else {
+    taskItem.innerHTML += '<span class="complete">click to mark incomplete';
+    taskItem.innerHTML += '</span>';
+  }
   return taskItem.outerHTML;
 }
 
@@ -32,13 +39,16 @@ Tasklist.prototype.add = function(task) {
 Tasklist.prototype.render = function(list) {
   list.innerHTML = '';
   for (i = this.tasks.length - 1; i >= 0; i -= 1) {
-    list.innerHTML += this.tasks[i].toHTML()
+    list.innerHTML += '<li>' + this.tasks[i].toHTML() + '</li>';
   }
 }
 
 const task1 = new Task("make a JS app", "show off my skills and learning abilities", "ASAP");
+task1.finish();
+const task2 = new Task("study more JS", "try to improve every day and make cool things", "tomorrow");
 let list1 = new Tasklist();
 list1.add(task1);
+list1.add(task2);
 list1.render(taskList);
 
 submitButton.addEventListener("click", function() {
