@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS To-Do List</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <form>
+      <label for="name">Task Name:</label>
+      <input type="text" id="nameInput" name="name"><br>
+      <label for="description">Task Description</label>
+      <input type="textarea" id="descriptionInput" name="description"><br>
+      <label for="deadline">Task Deadline</label>
+      <input type="text" id="deadlineInput"><br>
+      <input type="submit" id="submitButton" value="add task">
+    </form>
+
+    <div class="container">
+      <ol id="taskList"></ol>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
