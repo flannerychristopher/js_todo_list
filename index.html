@@ -7,20 +7,22 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <form>
-      <label for="name">Task Name:</label>
-      <input type="text" id="nameInput" name="name"><br>
-      <label for="description">Task Description</label>
-      <input type="textarea" id="descriptionInput" name="description"><br>
-      <label for="deadline">Task Deadline</label>
-      <input type="text" id="deadlineInput"><br>
-      <input type="submit" id="submitButton" value="add task">
-    </form>
-
     <div class="container">
-      <ol id="taskList"></ol>
-    </div>
 
+      <h1>Create a Task</h1>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="nameInput" name="name"><br>
+        <label for="description">Description:</label>
+        <input type="textarea" id="descriptionInput" name="description"><br>
+        <label for="deadline">Deadline:</label>
+        <input type="text" id="deadlineInput"><br>
+        <div id="submitButton">add task</div>
+      </form>
+
+      <ol id="taskList"></ol>
+
+    </div>
     <script src="js/script.js"></script>
   </body>
 </html>
