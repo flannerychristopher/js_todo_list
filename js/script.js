@@ -18,12 +18,12 @@ Task.prototype.finish = function() {
 Task.prototype.toHTML = function() {
   let taskItem = document.createElement('ul');
   taskItem.innerHTML = '<li>' + this.name + '</li>' +
-                      '<li>' + this.description + '</li>' +
-                      '<li>' + this.deadline + '</li>';
+                       '<li>' + this.description + '</li>' +
+                       '<li>' + this.deadline + '</li>';
   if (this.complete === false) {
-    taskItem.innerHTML += '<span class="incomplete">click to mark complete</span>';
+    taskItem.innerHTML += '<span class="finish incomplete">click to mark complete</span>';
   } else {
-    taskItem.innerHTML += '<span class="complete">click to mark incomplete</span>';
+    taskItem.innerHTML += '<span class="finish complete">click to mark incomplete</span>';
   }
   taskItem.innerHTML += '<br><span class="delete">click to delete this item</span>';
   return taskItem.outerHTML;
@@ -60,4 +60,18 @@ submitButton.addEventListener("click", function() {
   for (i = 0; i < allInputs.length; i++) {
     allInputs[i].value = '';
   }
+  buttonListen();
 });
+
+let finishButtons = document.getElementsByClassName('finish');
+function buttonListen() {
+  for (i = 0; i < finishButtons.length; i++) {
+    let button = finishButtons[i];
+    let buttonNum = i;
+    button.addEventListener("click", function() {
+
+      console.log(buttonNum);
+    });
+  }
+}
+buttonListen();
