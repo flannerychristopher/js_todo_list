@@ -64,23 +64,30 @@ submitButton.addEventListener("click", function() {
   for (i = 0; i < allInputs.length; i++) {
     allInputs[i].value = '';
   }
-  finishButtonListen();
+  buttonsListen();
 });
 
 let finishButtons = document.getElementsByClassName('finish');
-function finishButtonListen() {
+let deleteButtons = document.getElementsByClassName('delete');
+function buttonsListen() {
   for (i = 0; i < finishButtons.length; i++) {
     let button = finishButtons[i];
     let num = i;
     button.addEventListener("click", function() {
-      console.log(list1.tasks[num].name);
-      console.log(num);
-
       list1.tasks[num].finish();
-
       list1.render(taskList);
-      finishButtonListen();
+      buttonsListen();
+    });
+  }
+  for (i = 0; i < deleteButtons.length; i++) {
+    let button = deleteButtons[i];
+    let num = i;
+    button.addEventListener("click", function() {
+      list1.tasks.splice(num, 1);
+      list1.render(taskList);
+      buttonsListen();
+
     });
   }
 }
-finishButtonListen();
+buttonsListen();
