@@ -13,7 +13,11 @@ function Task(name, description, deadline, complete) {
   this.complete = false;
 }
 Task.prototype.finish = function() {
-  this.complete = true;
+  if (this.complete === true) {
+    this.complete = false;
+  } else {
+    this.complete = true;
+  }
 }
 Task.prototype.toHTML = function() {
   let taskItem = document.createElement('ul');
@@ -33,11 +37,11 @@ function Tasklist() {
   this.tasks = [];
 }
 Tasklist.prototype.add = function(task) {
-  this.tasks.push(task);
+  this.tasks.unshift(task);
 }
 Tasklist.prototype.render = function(list) {
   list.innerHTML = '';
-  for (i = this.tasks.length - 1; i >= 0; i -= 1) {
+  for (i = 0; i < this.tasks.length; i++) {
     list.innerHTML += '<li>' + this.tasks[i].toHTML() + '</li>';
   }
 }
@@ -60,18 +64,23 @@ submitButton.addEventListener("click", function() {
   for (i = 0; i < allInputs.length; i++) {
     allInputs[i].value = '';
   }
-  buttonListen();
+  finishButtonListen();
 });
 
 let finishButtons = document.getElementsByClassName('finish');
-function buttonListen() {
+function finishButtonListen() {
   for (i = 0; i < finishButtons.length; i++) {
     let button = finishButtons[i];
-    let buttonNum = i;
+    let num = i;
     button.addEventListener("click", function() {
+      console.log(list1.tasks[num].name);
+      console.log(num);
 
-      console.log(buttonNum);
+      list1.tasks[num].finish();
+
+      list1.render(taskList);
+      finishButtonListen();
     });
   }
 }
-buttonListen();
+finishButtonListen();
