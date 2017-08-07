@@ -1,11 +1,14 @@
+// HTML ELEMENTS
 const nameInput = document.getElementById('nameInput');
 const descriptionInput = document.getElementById('descriptionInput');
 const deadlineInput = document.getElementById('deadlineInput');
 const allInputs = document.querySelectorAll('input');
-
 const submitButton = document.getElementById('submitButton');
 const taskList = document.getElementById('taskList');
+let finishButtons = document.getElementsByClassName('finish');
+let deleteButtons = document.getElementsByClassName('delete');
 
+// CONSTRUCTOROS
 function Task(name, description, deadline, complete) {
   this.name = name;
   this.description = description;
@@ -46,6 +49,7 @@ Tasklist.prototype.render = function(list) {
   }
 }
 
+// ADD LIST ITEMS AND RENDER LIST
 const task1 = new Task("make a JS app", "show off my skills and learning abilities", "ASAP");
 task1.finish();
 const task2 = new Task("study more JS", "try to improve every day and make cool things", "tomorrow");
@@ -53,7 +57,9 @@ let list1 = new Tasklist();
 list1.add(task1);
 list1.add(task2);
 list1.render(taskList);
+buttonsListen();
 
+// SUBMIT BUTTON
 submitButton.addEventListener("click", function() {
   let newName = nameInput.value;
   let newDescription = descriptionInput.value;
@@ -67,8 +73,7 @@ submitButton.addEventListener("click", function() {
   buttonsListen();
 });
 
-let finishButtons = document.getElementsByClassName('finish');
-let deleteButtons = document.getElementsByClassName('delete');
+// COMPLETE AND DELETE BUTTON FUNCTION
 function buttonsListen() {
   for (i = 0; i < finishButtons.length; i++) {
     let button = finishButtons[i];
@@ -86,8 +91,6 @@ function buttonsListen() {
       list1.tasks.splice(num, 1);
       list1.render(taskList);
       buttonsListen();
-
     });
   }
 }
-buttonsListen();
